@@ -3,19 +3,19 @@ import random
 
 from state import State
 from lsap import Lsap
-from settings import Settings
+from settings import MctsSettings
 
 
 class Mcts:
 
     def __init__(self,
                  lsap: Lsap,
-                 settings: Settings,
+                 mcts_settings: MctsSettings,
                  ) -> None:
         self.lsap = lsap
-        self.settings = settings
+        self.settings = mcts_settings
 
-        self.inv_t = settings.init_inv_t
+        self.inv_t = mcts_settings.init_inv_t
 
         self.states: dict[tuple[int], State] = {}
         self.steps: list[tuple[int]] = []
@@ -27,8 +27,6 @@ class Mcts:
         current = State(self.settings, tuple(range(self.settings.dim)))
         self.states[current.perm] = current
         self.steps.append(current.perm)
-
-        print()
 
         for i in range(self.settings.max_depth):
             self.iterations(current, self.settings.max_depth - i)

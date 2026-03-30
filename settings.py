@@ -1,6 +1,6 @@
 
 
-class Settings:
+class MctsSettings:
 
     def __init__(self,
                  dim: int,
@@ -21,3 +21,17 @@ class Settings:
         self.is_no_cycle = is_no_cycle
         self.is_use_t = is_use_t
         self.init_inv_t = init_inv_t
+
+
+class NetworkSettings:
+
+    def __init__(self,
+                 channels_n: int = 256,
+                 blocks_n: int = 8,
+                 is_softmax: bool = False
+                 ) -> None:
+
+        self.channels_n = channels_n
+        self.blocks_n = blocks_n
+        self.is_softmax = is_softmax
+
